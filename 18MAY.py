@@ -79,7 +79,7 @@ print("Flattened list:", flatten(nested_list))
 '''''''''''''''''''''
 
 #P08
-''''''''''''''''''''''
+'''''''''''''''''''''''
 input_list = input("Enter elements of list separated by space: ").split()
 
 i=0
@@ -89,28 +89,28 @@ while i < len(input_list)-1:
     else:       i += 1
 
 print("List after removing consecutive duplicates:", input_list)
-'''''''''''''''''''''
+'''''''''''''''''''''''
 
 #P09
-''''''''''''''''''''''
+'''''''''''''''''''''
 input_list = input("Enter elements of list separated by space: ").split()
-copy_list = input_list.copy()
 grouped_list = []
 i=0
-while i != len(input_list)-1:
+while i < len(input_list):   
     ele = input_list[i]
     bubble = []
-    for j in copy_list:
-        if j == ele:
-            bubble.append(j)
-            input_list.remove(j)
+
+    while i < len(input_list) and input_list[i] == ele:
+        bubble.append(input_list[i])
+        i += 1   
+
     grouped_list.append(bubble)
-    i += 1
+
 
 print("Grouped list:", grouped_list)
 '''''''''''''''''''''
 
-
+''''''''''''''''''''''
 #Remove duplicate elements in list manually without using set() function
 input_list = input("Enter elements of list separated by space: ").split()
 copy_list = input_list.copy()
@@ -120,53 +120,32 @@ for ele in copy_list:
     if ele not in nondup_list:
         nondup_list.append(ele)
 print("List after removing duplicates:", nondup_list)
+'''''''''''''''''''''
 
-
+'''''''''''''''''''''''''''
 #P10
-''''''''''''''''''''''
+
 input_list = input("Enter elements of list separated by space: ").split()
+grouped_list = []
+i=0
+while i < len(input_list):   
+    ele = input_list[i]
+    bubble = []
 
-copy_list = input_list.copy()
-nondup_list = input_list.copy()
-new_list = []
+    while i < len(input_list) and input_list[i] == ele:
+        bubble.append(input_list[i])
+        i += 1   
 
-nondup_list = list(set(nondup_list))
+    grouped_list.append(bubble)
 
-for ele in nondup_list:
-    count = 0
-    group_list = []
-    for j in copy_list:
-        if ele == j:
-            count += 1
-    group_list.append(ele)
-    group_list.append(count)
-    new_list.append(group_list)
+print("Grouped list:", grouped_list)
 
-print("List of elements and their counts:", new_list)
-'''''''''''''''''''''
+final_list = []
 
-#P11
-''''''''''''''''''''''
-input_list = input("Enter elements of list separated by space: ").split()
+for group in grouped_list:
+    count = len(group)
+    final_list.append([group[0], count])
+    
+print("Final list:", final_list)
 
-copy_list = input_list.copy()
-nondup_list = input_list.copy()
-new_list = []
-
-nondup_list = list(set(nondup_list))
-
-for ele in nondup_list:
-    count = 0
-    group_list = []
-    for j in copy_list:
-        if ele == j:
-            count += 1
-    if count == 1:
-        new_list.append(ele)
-    else:
-        group_list.append(ele)
-        group_list.append(count)
-        new_list.append(group_list)
-
-print("List of elements and their counts:", new_list)
-'''''''''''''''''''''
+'''''''''''''''''''''''''''''
