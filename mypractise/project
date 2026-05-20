@@ -1,0 +1,199 @@
+BANK TRANSACTION SIMLUATION USING OOPS & EXCEPTION HANDLING
+
+1Great—starting with **OOP concepts using a bank example** is the best way to learn 👍  
+I’ll explain each concept in a **very simple, real-world + code way** step by step.
+
+***
+
+# 🧠 What is OOP?
+
+**OOP (Object-Oriented Programming)** = writing programs using **objects that represent real-world things**.
+
+👉 In a bank:
+
+* Customer ✅
+* Account ✅
+* Transactions ✅
+
+We convert these into **classes and objects**.
+
+***
+
+# 🧩 1. Class & Object (Foundation)
+
+## ✅ Class = Blueprint
+
+## ✅ Object = Real item created from that blueprint
+
+### 🏦 Bank Example:
+
+* **Class** → BankAccount
+* **Object** → Your actual account
+
+### 💻 Code:
+
+```python
+class BankAccount:
+    def __init__(self, name, balance):
+        self.name = name
+        self.balance = balance
+
+# Creating object
+acc1 = BankAccount("Sachi", 5000)
+```
+
+👉 `acc1` is a real bank account
+
+***
+
+# 🔐 2. Encapsulation (Data Protection)
+
+## ✅ Meaning:
+
+Keep sensitive data safe by **controlling access**
+
+👉 In bank:
+
+* You should NOT directly change balance
+* Use methods like deposit/withdraw
+
+***
+
+### ❌ Bad way:
+
+```python
+acc1.balance = 1000000   # Anyone can change balance (wrong!)
+```
+
+### ✅ Good way:
+
+```python
+class BankAccount:
+    def __init__(self, name, balance):
+        self.name = name
+        self.__balance = balance   # private variable
+
+    def deposit(self, amount):
+        self.__balance += amount
+
+    def get_balance(self):
+        return self.__balance
+```
+
+👉 `__balance` is private → protected ✅
+
+***
+
+# 🧬 3. Inheritance (Reuse Code)
+
+## ✅ Meaning:
+
+Create new classes using existing ones
+
+***
+
+### 🏦 Bank Example:
+
+* SavingsAccount
+* CurrentAccount
+
+Both are types of BankAccount
+
+***
+
+### 💻 Code:
+
+```python
+class BankAccount:
+    def __init__(self, balance):
+        self.balance = balance
+
+class SavingsAccount(BankAccount):
+    def add_interest(self):
+        self.balance += self.balance * 0.05
+```
+
+👉 SavingsAccount **inherits** BankAccount ✅
+
+***
+
+# 🎭 4. Polymorphism (Same action, different behavior)
+
+## ✅ Meaning:
+
+Same method works differently for different objects
+
+***
+
+### 🏦 Example:
+
+* Withdraw in:
+  * Savings account → limited withdrawals
+  * Current account → unlimited
+
+***
+
+### 💻 Code:
+
+```python
+class SavingsAccount:
+    def withdraw(self, amount):
+        print("Limited withdrawal")
+
+class CurrentAccount:
+    def withdraw(self, amount):
+        print("Unlimited withdrawal")
+```
+
+👉 Same `withdraw()` → different behavior ✅
+
+***
+
+# 🎯 5. Abstraction (Hide complexity)
+
+## ✅ Meaning:
+
+Show only important features, hide internal logic
+
+***
+
+### 🏦 Example:
+
+* ATM machine:
+  * You just press buttons
+  * You don’t see backend logic
+
+***
+
+### 💻 Code:
+
+```python
+class BankAccount:
+    def withdraw(self, amount):
+        if self._check_balance(amount):
+            self._process_withdrawal(amount)
+
+    def _check_balance(self, amount):
+        return True   # hidden logic
+
+    def _process_withdrawal(self, amount):
+        print("Processed")
+```
+
+👉 User only sees `withdraw()` ✅
+
+***
+
+# 🏁 Final Summary (Super Simple)
+
+| Concept       | Bank Example                |
+| ------------- | --------------------------- |
+| Class         | BankAccount                 |
+| Object        | Your account                |
+| Encapsulation | Protect balance             |
+| Inheritance   | Savings / Current account   |
+| Polymorphism  | Different withdraw behavior |
+| Abstraction   | ATM hiding complexity       |
+
+***
+
