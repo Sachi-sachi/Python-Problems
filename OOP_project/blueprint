@@ -1,0 +1,319 @@
+***
+
+# 🧠 1. Core Entities (Main Classes)
+
+### 1. `User` (Base Class)
+
+Represents any app user.
+
+ Attributes 
+
+* user_id
+* name
+* phone
+* address
+
+ Methods 
+
+* login()
+* logout()
+* update_profile()
+
+✅ OOP concepts:
+
+* Encapsulation (private attributes + getters/setters)
+* Abstraction (general user behavior)
+
+***
+
+### 2. `Customer` (inherits from User)
+
+Represents people ordering food.
+
+Attributes
+
+* cart
+* order_history
+
+Methods
+
+* browse_restaurants()
+* add_to_cart(item)
+* remove_from_cart(item)
+* place_order()
+* track_order(order_id)
+* make_payment()
+
+✅ OOP:
+
+* Inheritance
+* Method specialization
+
+***
+
+### 3. `DeliveryAgent` (inherits from User)
+
+Handles delivery.
+
+Attributes
+
+* current_location
+* availability_status
+
+Methods
+
+* accept_order(order)
+* pick_order(order)
+* deliver_order(order)
+* update_status()
+
+✅ OOP:
+
+* Inheritance
+
+***
+
+### 4. `Admin` (inherits from User)
+
+Manages the system.
+
+Methods
+
+* add_restaurant()
+* remove_restaurant()
+* view_all_orders()
+* manage_users()
+
+✅ OOP:
+
+* Inheritance
+* Role-based abstraction
+
+***
+
+# 🍴 2. Food & Restaurant System
+
+### 5. `Restaurant`
+
+Attributes
+
+* restaurant_id
+* name
+* location
+* menu (list of FoodItems)
+
+Methods
+
+* add_item(item)
+* remove_item(item_id)
+* update_item()
+* show_menu()
+
+***
+
+### 6. `FoodItem`
+
+Attributes
+
+* item_id
+* name
+* price
+* category
+* availability
+
+Methods
+
+* update_price()
+* toggle_availability()
+
+***
+
+# 🛒 3. Cart & Order Management
+
+### 7. `Cart`
+
+Attributes
+
+* items (list of FoodItems)
+* total_price
+
+Methods
+
+* add_item(item)
+* remove_item(item)
+* calculate_total()
+* clear_cart()
+
+✅ Encapsulation: hide total calculation inside class
+
+***
+
+### 8. `Order`
+
+Attributes
+
+* order_id
+* customer
+* items
+* total_amount
+* status
+* delivery_agent
+
+Methods
+
+* create_order()
+* update_status()
+* assign_delivery_agent()
+* cancel_order()
+
+✅ OOP:
+
+* Encapsulation
+* State management
+
+***
+
+# 💳 4. Payment System (Polymorphism Focus)
+
+### 9. `Payment` (Base Class / Abstract)
+
+Methods
+
+* process_payment(amount)
+
+***
+
+### Subclasses:
+
+#### `CreditCardPayment`
+
+* process_payment()
+
+#### `UPIPayment`
+
+* process_payment()
+
+#### `CashOnDelivery`
+
+* process_payment()
+
+✅ OOP:
+
+* Polymorphism (same function, different behavior)
+* Abstraction (base class)
+
+***
+
+# 🚚 5. Delivery / Tracking
+
+### 10. `Delivery`
+
+Attributes
+
+* order
+* agent
+* status
+* estimated_time
+
+Methods
+
+* assign_agent()
+* update_location()
+* mark_delivered()
+
+***
+
+# 🔔 6. Notification System (Optional but strong OOP design)
+
+### 11. `Notification` (Base Class)
+
+Methods
+
+* send(message)
+
+Subclasses:
+
+* `EmailNotification`
+* `SMSNotification`
+* `PushNotification`
+
+✅ Polymorphism again
+
+***
+
+# 🔐 7. Additional Utility Classes
+
+### 12. `Review`
+
+* rating
+* comment
+* customer
+
+### 13. `Address`
+
+* street
+* city
+* pincode
+
+***
+
+# 🧩 How You Cover ALL OOP Concepts
+
+### ✅ 1. Encapsulation
+
+* Make attributes private (`_` or `__`)
+* Use getter/setter methods
+* Example: Cart total calculated internally
+
+***
+
+### ✅ 2. Inheritance
+
+* User → Customer, Admin, DeliveryAgent
+* Payment → UPI, Card, COD
+* Notification → SMS, Email
+
+***
+
+### ✅ 3. Polymorphism
+
+* `process_payment()` behaves differently
+* `send()` behaves differently
+* `update_status()` across roles
+
+***
+
+### ✅ 4. Abstraction
+
+* Base classes:
+  * User
+  * Payment
+  * Notification
+
+Hide internal complexity, expose only needed methods.
+
+***
+
+# 🏗️ Suggested Flow (System Design)
+
+1. User signs up → becomes Customer
+2. Customer browses restaurants
+3. Adds items → Cart
+4. Places order → Order created
+5. Payment processed → via polymorphic class
+6. Delivery agent assigned
+7. Order delivered
+8. Notification sent
+
+***
+
+# ✅ Bonus Ideas (to make your project stand out)
+
+* Add discount system → new class `Coupon`
+* Add search/filter
+* Add order status enum
+* Add multiple restaurants per order restriction
+* Add ratings/reviews
+
+***
+
