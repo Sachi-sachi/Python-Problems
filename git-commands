@@ -1,0 +1,63 @@
+
+1. Clone (pull code from GitHub to VS Code)
+
+
+git clone https://github.com/username/repo.git
+cd repo
+code .
+
+2. Create a Feature Branch
+
+Always create a new branch (never work directly on `main`)
+
+
+git checkout -b feature/my-feature-name
+
+
+3. Add folders and Python files
+
+Create manually in VS Code explorer or terminal
+
+
+mkdir new_folder
+touch new_folder/app.py
+
+4. Add & commit changes
+
+git add .
+git commit -m "Added new folder and python files"
+
+5. Push branch to GitHub
+
+
+git push origin feature/my-feature-name
+
+6. Create Pull Request (PR)
+
+1. Go to GitHub repo in browser
+2. You’ll see “Compare & pull request”
+3. Click it
+4. Add description
+5. Click Create Pull Request
+
+7. Merge to main
+
+Option A (GitHub UI):
+
+1. Click "Merge pull request"
+2. Confirm merge
+
+
+
+Option B (locally):
+
+
+git checkout main
+git pull origin main
+git merge feature/my-feature-name
+git push origin main
+
+8. Clean up (optional but good practice)
+
+git branch -d feature/my-feature-name
+git push origin --delete feature/my-feature-name
