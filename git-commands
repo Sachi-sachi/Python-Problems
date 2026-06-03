@@ -35,10 +35,9 @@ git push origin feature/my-feature-name
 6. Create Pull Request (PR)
 
 1. Go to GitHub repo in browser
-2. You’ll see “Compare & pull request”
-3. Click it
-4. Add description
-5. Click Create Pull Request
+2. Click “Compare & pull request”
+3. Add description
+4. Click Create Pull Request
 
 7. Merge to main
 

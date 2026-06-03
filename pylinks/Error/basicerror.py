@@ -1,7 +1,6 @@
 import os
 print(os.getcwd())
 
-
 try:
     file = open("code.txt", "r")
     datatypes = open("datatypes.txt", "r")
@@ -62,31 +61,25 @@ def check_semicolon(line, pos):
                 print(f"Incomplete condition in line number {pos}")
             
 
-
-
 content= file.read() + "\n"
 line = ""
 word = ""
 
-#extract word
-for ch in content:
-    if ch!=" " and ch!="\n":
-        word=word+ch
-    else:
-        if word!="":
-            check_word(word)
-        word=""
-
 file.seek(0)
-content2= file.read() + "\n"
+content= file.read() + "\n"
 linenumber=0
 #extract line
-for l in content2:
+for l in content:
     if l!="\n":
         line=line+l
+    
     else:
         if line!="":
             linenumber+=1
             check_semicolon(line, linenumber)
+            #extract word from line
+            words=line.split(" ")
+            for w in words:
+                check_word(w)
         line=""
         
