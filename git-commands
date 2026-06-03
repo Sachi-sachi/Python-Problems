@@ -60,4 +60,6 @@ git push origin main
 8. Clean up (optional but good practice)
 
 git branch -d feature/my-feature-name
+# -D if you want to force delete without checking merged status
 git push origin --delete feature/my-feature-name
+git fetch --prune
