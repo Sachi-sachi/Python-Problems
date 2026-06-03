@@ -35,22 +35,58 @@ def check_word(word):
     elif flag2 == True:
         print(f"{word} is a keyword so you cannot use it as a variable name")
 
-    else:
-        print(f"{word} is a Valid variable name")
+   # else:
+       # print(f"{word} is a Valid variable name")
 
 #Brsainstorming how to detect semicolon is given after if condition or 
 # if a == b:
 # if a == b 
 # if a == b'
+# if : a == b
+# if a: #valid
+# if a := b
+# if a := b:
 #can't jump cursor to end of line becus a print statement in same line of condition is valid
+
+def check_semicolon(line, pos):
+    line = line.strip()
+
+    if line.startswith("if"):
+        if ":" not in line:
+            print(f"Missing ':' in line number {pos}")
+        
+        else: #check where if : is given after condition and not just anywhere in the line
+            condition = line.split(":")
+            condition = condition[0].strip()
+            if condition == "if":
+                print(f"Incomplete condition in line number {pos}")
+            
+
 
 
 content= file.read() + "\n"
+line = ""
 word = ""
 
+#extract word
 for ch in content:
     if ch!=" " and ch!="\n":
         word=word+ch
     else:
-        check_word(word)
+        if word!="":
+            check_word(word)
         word=""
+
+file.seek(0)
+content2= file.read() + "\n"
+linenumber=0
+#extract line
+for l in content2:
+    if l!="\n":
+        line=line+l
+    else:
+        if line!="":
+            linenumber+=1
+            check_semicolon(line, linenumber)
+        line=""
+        

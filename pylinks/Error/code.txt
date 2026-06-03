@@ -1,1 +1,5 @@
 this else is an int
+if a == b: print("yoo")
+if a == b print("yoo")
+if a := b print("yoo")
+if:
