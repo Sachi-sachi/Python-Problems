@@ -1,3 +1,4 @@
+#program starts here
 import tkinter as tk
 import loadingpage as lp
 import login
